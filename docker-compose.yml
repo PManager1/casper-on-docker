@@ -1,0 +1,34 @@
+# Run docker-compose build
+# Run docker-compose up
+# Live long and prosper
+
+version: '2'
+
+services:
+
+  node:
+    container_name: simple_express
+    image: simple_express
+    build:
+      context: .
+      dockerfile: docker/node.development.dockerfile
+    volumes:
+      - .:/var/www/simple_express
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"
+    networks:
+      - simple_express-network
+      
+  #No authentication is provided here - just a demo! Read the Dockerfile
+  #for more information about adding authentication.
+  mongodb:
+    container_name: mongo_simple_express
+    image: mongo
+    networks:
+      - simple_express-network
+
+networks:
+  simple_express-network:
+    driver: bridge
