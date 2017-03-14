@@ -2,7 +2,7 @@ FROM node:latest
 
 MAINTAINER Dan Wahlin
 
-ENV CONTAINER_PATH /var/www/simple_express
+ENV CONTAINER_PATH /var/www/simple_casper
 
 WORKDIR   $CONTAINER_PATH
 

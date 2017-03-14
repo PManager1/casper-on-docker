@@ -7,28 +7,28 @@ version: '2'
 services:
 
   node:
-    container_name: simple_express
-    image: simple_express
+    container_name: simple_casper
+    image: simple_casper
     build:
       context: .
       dockerfile: docker/node.development.dockerfile
     volumes:
-      - .:/var/www/simple_express
+      - .:/var/www/simple_casper
     environment:
       - NODE_ENV=development
     ports:
       - "3000:3000"
     networks:
-      - simple_express-network
+      - simple_casper-network
       
   #No authentication is provided here - just a demo! Read the Dockerfile
   #for more information about adding authentication.
   mongodb:
-    container_name: mongo_simple_express
+    container_name: mongo_simple_casper
     image: mongo
     networks:
-      - simple_express-network
+      - simple_casper-network
 
 networks:
-  simple_express-network:
+  simple_casper-network:
     driver: bridge
