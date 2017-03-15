@@ -8,7 +8,28 @@ $ docker-compose up
 
 
 
+how it works ?
+you go tto the path where the file is located, then run 
 
+$ casperjs googLinks.js 
+
+
+#########################
+
+install sudo here:
+apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*
+
+go inside the $din
+and   npm install   -g casperjs 
+
+install vim here:
+
+apt-get update
+apt-get install vim
+
+
+get the file from here, 
+/bin/bash phantomjs_install.sh 
 
 
 
