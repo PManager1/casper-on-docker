@@ -1,6 +1,7 @@
 var casper=require('casper').create({
     verbose:true,
-    logLevel:'error',
+    // logLevel:'error',
+    logLevel: "debug",    
     pageSettings:{
         loadImages:false,
         loadPlugins:false
@@ -41,6 +42,7 @@ function outputJSON(){
 };
 
 function getphoto(){
+  // this.echo(' entering getphoto function ');
   var names=$('[data-label=property-photo] a');
   return _.map(names, function(e){
     return e.getAttribute('href');
@@ -144,20 +146,37 @@ casper.then(function(){
 
 });
 
+function jsonArraytoObjects(){
+    this.echo('inside jsonArraytoObjects'); 
+
+    this.echo('underscore ='); 
+    this.echo(_);   
+};
+
+
 casper.then(function(){
     this.echo(photolinks.length +'links found');
 
-});
-
-casper.run(function(){
-    var data=outputJSON();
-    
+    var data=outputJSON();    
     this.echo(' before writign to file found');
-
     this.echo(data);
 
+
+    this.echo(' before calling fun  jsonArraytoObjects()');
+    // jsonArraytoObjects(); 
+    // getphoto();
+    this.echo(' After calling fun jsonArraytoObjects()');
+
     fs.write('data.json',data,'w');
+    
+});
+
+
+
+
+casper.run(function(){
     this.echo("\n Done").exit();
+
 });
 
 
