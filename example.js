@@ -26,6 +26,7 @@ var output=[];
 
 function outputJSON(){
     output.push({
+        arr_kindOfHome: arr_kindOfHome,
         photolinks: photolinks,
         pricelist: pricelist,
         getstreetAddresss: getstreetAddresss,
@@ -35,7 +36,6 @@ function outputJSON(){
         postalCode: postalCode,
         noofbeds: noofbeds,
         noofbaths: noofbaths,
-        arr_kindOfHome: kindOfHome,
     });
     return JSON.stringify(output);
 };
@@ -88,13 +88,14 @@ var names=$('span.listing-region');
 function getpostalcode(){
   // var names=$('[itemprop=postalCode]');
   var names=$('span.listing-postal');
+
   return _.map(names, function(e){
     return e.innerHTML;
   });
 };
 
 
-function kindOfHome(){
+function getkindOfHome(){
   // var names=$('[itemprop=postalCode]');
   var names=$('.srp-property-type');
   return _.map(names, function(e){
@@ -116,25 +117,6 @@ function getnoofbaths(){
   });
 };
 
-// function alltest(){
-//     var rows = document.querySelectorAll('.aspect-content');
-//     console.log(rows.length);
-//     var arra2y=[];
-//     for (var i = 0;i<rows.length; i++) {
-//         console.log("executing");
-//     //     var row=rows[i];
-//     //     var a = rows.querySelector('[data-label=property-meta-beds] span');
-//     //     var l = rows.querySelector('[data-label=property-meta-baths] span');
-//     //     var job = {};
-
-//     //     job['beds'] = a.innerHTML;
-//     //     job['baths'] = l.innerHTML;
-//     //     console.log(job);
-//     //     arra2y.push(job);
-//       }
-//     // return arra2y;
-// };
-
 
 casper.start(url, function(){
     this.echo(this.getTitle());
@@ -155,8 +137,8 @@ casper.then(function(){
     noofbeds=this.evaluate(getnoofbeds);
     noofbaths=this.evaluate(getnoofbaths);
     getmetasqfts=this.evaluate(getmetasqft);
-    arr_kindOfHome=this.evaluate(kindOfHome);
-    this.echo( 'arr_kindOfHome');
+    arr_kindOfHome=this.evaluate(getkindOfHome);
+    this.echo( 'arr_kindOfHome =');
     this.echo(arr_kindOfHome);    
 
 
@@ -164,15 +146,7 @@ casper.then(function(){
 
 casper.then(function(){
     this.echo(photolinks.length +'links found');
-    // this.echo('photolink: '+photolinks.join('\n-'));
-    // this.echo('pricelist: '+pricelist.join('\n-'));
-    // this.echo('streetaddress: '+getstreetAddresss.join('\n-'));
-    // this.echo('locality: '+addressLocality.join('\n-'));
-    // this.echo('address region: '+addressRegion.join('\n-'));
-    // this.echo('postalcode: '+postalCode.join('\n-'));
-    // this.echo('no_of_beds: '+noofbeds.join('\n-'));
-    // this.echo('no of baths: '+noofbaths.join('\n-'));
-    // this.echo('area: '+getmetasqfts.join('\n-'));
+
 });
 
 casper.run(function(){
