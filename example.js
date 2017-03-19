@@ -20,6 +20,7 @@ var addressRegion=[];
 var postalCode=[];
 var noofbeds=[];
 var noofbaths=[];
+var arr_kindOfHome=[]; 
 
 var output=[];
 
@@ -34,6 +35,7 @@ function outputJSON(){
         postalCode: postalCode,
         noofbeds: noofbeds,
         noofbaths: noofbaths,
+        arr_kindOfHome: kindOfHome,
     });
     return JSON.stringify(output);
 };
@@ -86,6 +88,15 @@ var names=$('span.listing-region');
 function getpostalcode(){
   // var names=$('[itemprop=postalCode]');
   var names=$('span.listing-postal');
+  return _.map(names, function(e){
+    return e.innerHTML;
+  });
+};
+
+
+function kindOfHome(){
+  // var names=$('[itemprop=postalCode]');
+  var names=$('.srp-property-type');
   return _.map(names, function(e){
     return e.innerHTML;
   });
@@ -144,6 +155,10 @@ casper.then(function(){
     noofbeds=this.evaluate(getnoofbeds);
     noofbaths=this.evaluate(getnoofbaths);
     getmetasqfts=this.evaluate(getmetasqft);
+    arr_kindOfHome=this.evaluate(kindOfHome);
+    this.echo( 'arr_kindOfHome');
+    this.echo(arr_kindOfHome);    
+
 
 });
 
@@ -162,6 +177,11 @@ casper.then(function(){
 
 casper.run(function(){
     var data=outputJSON();
+    
+    this.echo(' before writign to file found');
+
+    this.echo(data);
+
     fs.write('data.json',data,'w');
     this.echo("\n Done").exit();
 });
