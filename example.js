@@ -41,6 +41,16 @@ function outputJSON(){
     return JSON.stringify(output);
 };
 
+
+var formattedArr=[];
+
+function format_outputJSON() {
+
+   return JSON.stringify(formattedArr);
+}
+
+
+
 function getphoto(){
   // this.echo(' entering getphoto function ');
   var names=$('[data-label=property-photo] a');
@@ -158,8 +168,15 @@ casper.then(function(){
     this.echo(photolinks.length +'links found');
 
     var data=outputJSON();    
-    this.echo(' before writign to file found');
-    this.echo(data);
+    this.echo('161- before writign to file found');
+    // this.echo(data);
+    var formatted_data = data; 
+
+   
+    this.echo('167- formatted_data');
+    this.echo(formatted_data);
+
+   fs.write('formatted_data.json',formatted_data,'w');
 
 
     this.echo(' before calling fun  jsonArraytoObjects()');
