@@ -1,7 +1,7 @@
 var casper=require('casper').create({
     verbose:true,
-    // logLevel:'error',
-    logLevel: "debug",    
+    logLevel:'error',
+    // logLevel: "debug",    
     pageSettings:{
         loadImages:false,
         loadPlugins:false
