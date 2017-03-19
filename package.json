@@ -1,0 +1,29 @@
+{
+  "name": "simple_casper",
+  "version": "1.0.0",
+  "description": "running first time,",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "casper": "^0.1.1",
+    "chalk": "^1.1.3",
+    "colors": "^1.1.2",
+    "express": "^4.15.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpca999/casper-on-docker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpca999/casper-on-docker/issues"
+  },
+  "homepage": "https://github.com/jpca999/casper-on-docker#readme"
+}
